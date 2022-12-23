@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.quiz.lesson02.dao.StoreDAO"> // DAO의 경로
-    <select id="selectStoreList" resultType="com.quiz.lesson02.model.Store"> // class 경로
+ <mapper namespace="com.quiz.lesson02.dao.StoreDAO">  <!-- DAO의 경로 -->
+    <select id="selectStoreList" resultType="com.quiz.lesson02.model.Store"> <!-- class 경로 -->
         SELECT
             *
         FROM
