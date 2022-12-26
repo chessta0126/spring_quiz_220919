@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.quiz.lesson03.dao.EstateDAO">  <!-- DAO의 경로 -->
-	<select id="setEstate"
+	<select id="selectEstateId"
 		resultType="com.quiz.lesson03.model.Estate"> <!-- class 경로 -->
 		SELECT
 		`id`
@@ -18,5 +18,45 @@
 		FROM
 		`real_estate`
 		WHERE `id`=#{id}
+	</select>
+
+	<select id="selectEstateRentPrice"
+		resultType="com.quiz.lesson03.model.Estate"> <!-- class 경로 -->
+		SELECT
+		`id`
+		,`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+		FROM
+		`real_estate`
+		WHERE `rentPrice`&lt;#{rent_price}
+		<!-- 부등호는 <>가 열렸다고 생각하므로, &lt;(<) , &gt; (>) 로 쓴다.-->
+		<!-- <![CDATA[   ]]>로 감싸도 된다.-->
+	</select>
+
+	<select id="selectEstateAreaPrice"
+		resultType="com.quiz.lesson03.model.Estate"> <!-- class 경로 -->
+		SELECT
+		`id`
+		,`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+		FROM
+		`real_estate`
+		order by `createdAt` desc
+		WHERE `area`>=#{area}
+		AND `price`&lt;=#{price}
+		<!-- 부등호는 <>가 열렸다고 생각하므로, &lt;(<) , &gt; (>) 로 쓴다.-->
+		<!-- <![CDATA[   ]]>로 감싸도 된다.-->
 	</select>
 </mapper>
