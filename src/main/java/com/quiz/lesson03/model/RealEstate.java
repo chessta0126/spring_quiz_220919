@@ -2,7 +2,7 @@ package com.quiz.lesson03.model;
 
 import java.util.Date;
 
-public class Estate {
+public class RealEstate {
 	// 필드
 	private int id;
 	private int realtorId;
