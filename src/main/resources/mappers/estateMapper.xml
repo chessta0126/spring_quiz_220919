@@ -124,12 +124,14 @@
 	<!-- Quiz 03 (UPDATE) -->
 	<update id="updateRealEstateById" parameterType="map">
     <!-- DAO에서 @Param으로 묶었으므로 parameterType="map"-->
-    	UPDATE `real_estate`
-    	SET
-    		`type` = #{type}
-    		,`price` = #{price}
-    		,`updatedAt` = NOW()
-    	
+    	UPDATE
+			`real_estate`
+		SET
+			`type` = #{type}
+			, `price` = #{price}
+			, `updatedAt` = NOW()
+		WHERE
+			id = #{id}
     </update>
 	
 	<!-- Quiz 04 (DELETE) -->
