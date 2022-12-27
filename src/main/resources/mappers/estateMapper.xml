@@ -94,7 +94,8 @@
 		)
 	</insert>
 	
-	<insert id="insertRealEstateAsField" parameterType="com.quiz.lesson03.dao.RealEstateDAO">
+	<insert id="insertRealEstateAsField" parameterType="map">
+	<!-- DAO에서 @Param으로 묶었으므로 parameterType="map"-->
 		INSERT INTO `real_estate`
 		(
 			`realtorId`
@@ -117,5 +118,25 @@
 			,NOW()
 			,NOW()
 		)
-	</insert>	
+	</insert>
+	
+	
+	<!-- Quiz 03 (UPDATE) -->
+	<update id="updateRealEstateById" parameterType="map">
+    <!-- DAO에서 @Param으로 묶었으므로 parameterType="map"-->
+    	UPDATE `real_estate`
+    	SET
+    		`type` = #{type}
+    		,`price` = #{price}
+    		,`updatedAt` = NOW()
+    	
+    </update>
+	
+	<!-- Quiz 04 (DELETE) -->
+	<delete id="deleteRealEstateById" parameterType="int">
+		DELETE
+		FROM `real_estate`
+		WHERE
+			`id` = #{id}
+	</delete>
 </mapper>
