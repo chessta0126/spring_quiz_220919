@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>공인중개사 추가</title>
+	<title>${subject}</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
@@ -13,36 +13,38 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>공인중개사 정보</h1>
-	<table class="table table-stripted">
+	<div class="container">
+		<h1>${subject}</h1>
+		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<td>${realtor.id}</td>
+				<td>${result.id}</td>
 			</tr>
 			<tr>
 				<th>상호명</th>
-				<td>${realtor.office}</td>
+				<td>${result.office}</td>
 			</tr>
 			<tr>
 				<th>전화 번호</th>
-				<td>${realtor.phoneNumber}</td>
+				<td>${result.phoneNumber}</td>
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td>${realtor.address}</td>
+				<td>${result.address}</td>
 			</tr>
 			<tr>
 				<th>등급</th>
-				<td>${realtor.grade}</td>
+				<td>${result.grade}</td>
 			</tr>
 			<tr>
 				<th>생성일</th>
-				<td>${realtor.createdAt}</td>
+				<td>${result.createdAt}</td>
 			</tr>
 			<tr>
 				<th>수정일</th>
-				<td>${realtor.updatedAt}</td>
+				<td>${result.updatedAt}</td>
 			</tr>
 		</table>
+	</div>
 </body>
 </html>

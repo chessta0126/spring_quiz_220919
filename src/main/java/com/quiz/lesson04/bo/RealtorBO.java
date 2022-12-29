@@ -12,10 +12,10 @@ public class RealtorBO {
 	@Autowired
 	private RealtorDAO realtorDAO;
 	
-	public void addRealtor(@ModelAttribute Realtor realtor) {
+	public void addRealtor(Realtor realtor) {
 		realtorDAO.insertRealtor(realtor);
 	}
-	public Realtor selectRealtor(int id) {
+	public Realtor getRealtor(int id) {
 		return realtorDAO.selectRealtor(id);
 	}
 }
