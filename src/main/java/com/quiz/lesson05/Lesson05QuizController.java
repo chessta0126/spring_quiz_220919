@@ -15,7 +15,7 @@ public class Lesson05QuizController {
 	// http://localhost:8080/lesson05/quiz01
 	@GetMapping("/lesson05/quiz01")
 	public String quiz01() {
-		return "/lesson05/quiz01";
+		return "lesson05/quiz01";
 	}
 
 	// http://localhost:8080/lesson05/quiz02_1
@@ -30,7 +30,7 @@ public class Lesson05QuizController {
 		
 		model.addAttribute("musicRanking",musicRanking);
 		
-		return "/lesson05/quiz02_1";
+		return "lesson05/quiz02_1";
 	}
 	
 	// http://localhost:8080/lesson05/quiz02_2
@@ -75,6 +75,6 @@ public class Lesson05QuizController {
 		
 		model.addAttribute("membership",membership);
 		
-		return "/lesson05/quiz02_2";
+		return "lesson05/quiz02_2";
 	}
 }
