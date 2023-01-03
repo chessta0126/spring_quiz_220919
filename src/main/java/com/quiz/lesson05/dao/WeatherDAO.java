@@ -8,5 +8,5 @@ import com.quiz.lesson05.model.Weather;
 
 @Repository
 public interface WeatherDAO {
-	public List<Weather> selectWeather();
+	public List<Weather> selectWeatherList();
 }

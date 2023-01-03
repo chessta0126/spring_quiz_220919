@@ -1,2 +1,3 @@
 @charset "UTF-8";
-body{background-color: #999};
+#menu{background-color: #6495EC}
+.nav-item{color: white; font-weight: bold; font-size: 20px}

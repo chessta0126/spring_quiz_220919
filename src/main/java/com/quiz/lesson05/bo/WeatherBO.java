@@ -13,7 +13,7 @@ public class WeatherBO {
 	@Autowired
 	private WeatherDAO weatherDAO;
 	
-	public List<Weather> getWeather() {
-		return weatherDAO.selectWeather();
+	public List<Weather> getWeatherList() {
+		return weatherDAO.selectWeatherList();
 	}
 }

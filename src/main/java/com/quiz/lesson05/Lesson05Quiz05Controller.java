@@ -18,10 +18,16 @@ public class Lesson05Quiz05Controller {
 	// http://localhost:8080/lesson05/quiz05
 	@GetMapping("/lesson05/quiz05")
 	public String quiz05(Model model) {
-		List<Weather> weatherHistory = weatherBO.getWeather();
+		List<Weather> weatherHistoryList = weatherBO.getWeatherList();
 		
-		model.addAttribute("weatherHistory",weatherHistory);
+		model.addAttribute("weatherHistory",weatherHistoryList);
 		
 		return "lesson05/quiz05";
+	}
+	
+	// http://localhost:8080/lesson05/quiz05_insert
+	@GetMapping("/lesson05/quiz05_insert")
+	public String quiz05_insert(Model model) {
+		return "lesson05/insert";
 	}
 }
