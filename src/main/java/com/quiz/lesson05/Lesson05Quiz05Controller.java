@@ -13,6 +13,9 @@ import com.quiz.lesson04.model.Realtor;
 import com.quiz.lesson05.bo.WeatherBO;
 import com.quiz.lesson05.model.Weather;
 
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 public class Lesson05Quiz05Controller {
 	@Autowired
@@ -38,6 +41,7 @@ public class Lesson05Quiz05Controller {
 	public String addWeather(
 				@ModelAttribute Weather weather
 				,Model model
+				//,HttpServletResponse response
 				) {
 			// DB insert
 			weatherBO.addWeather(weather);
@@ -46,6 +50,7 @@ public class Lesson05Quiz05Controller {
 			List<Weather> weatherHistoryList = weatherBO.getWeatherList();
 			model.addAttribute("weatherHistory",weatherHistoryList);
 			
-		return "lesson05/quiz05"; // redirect
+			// response.sendRedirect("/lesson05/quiz05");
+			return "redirect:/lesson05/quiz05"; // redirect
 	}
 }

@@ -19,7 +19,7 @@
 			`weather_history`
 	</select>
 	
-	<insert id="insertWeather" parameterType="map">
+	<insert id="insertWeather" parameterType="com.quiz.lesson05.model.Weather">
 	INSERT INTO `weather_history`
     	(<!-- id는 알아서 생성될 것임 -->
     		`date`

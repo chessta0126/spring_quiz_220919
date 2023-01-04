@@ -1,4 +1,4 @@
 @charset "UTF-8";
 #menu{background-color: #6495EC}
 .nav-item{color: white; font-weight: bold; font-size: 20px}
-a{color: white; text-decoration: none;}
+a, a:hover{color: white; text-decoration: none;}
