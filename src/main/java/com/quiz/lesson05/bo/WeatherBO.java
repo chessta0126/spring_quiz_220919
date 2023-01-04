@@ -16,4 +16,8 @@ public class WeatherBO {
 	public List<Weather> getWeatherList() {
 		return weatherDAO.selectWeatherList();
 	}
+
+	public void addWeather(Weather weather) {
+		weatherDAO.insertWeather(weather);
+	}
 }

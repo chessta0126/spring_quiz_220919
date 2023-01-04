@@ -18,4 +18,29 @@
 		FROM
 			`weather_history`
 	</select>
+	
+	<insert id="insertWeather" parameterType="map">
+	INSERT INTO `weather_history`
+    	(<!-- id는 알아서 생성될 것임 -->
+    		`date`
+    		,`weather`
+    		,`temperatures`
+    		,`precipitation`
+    		,`microDust`
+    		,`windSpeed`
+    		,`createdAt`
+    		,`updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{date}
+    		,#{weather}
+    		,#{temperatures}
+    		,#{precipitation}
+    		,#{microDust}
+    		,#{windSpeed}
+    		,NOW()
+    		,NOW()
+    	)
+    </insert>
 </mapper>

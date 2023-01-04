@@ -6,8 +6,8 @@
 </div>
 
 <ul class="nav flex-column">
-	<li class="nav-item pb-3">날씨</li>
-	<li class="nav-item pb-3">날씨입력</li>
+	<li class="nav-item pb-3"><a href="http://localhost:8080/lesson05/quiz05">날씨</a></li>
+	<li class="nav-item pb-3"><a href="http://localhost:8080/lesson05/quiz05_insert_view">날씨입력</a></li>
 	<li class="nav-item pb-3">테마날씨</li>
 	<li class="nav-item pb-3">관측기후</li>
 </ul>

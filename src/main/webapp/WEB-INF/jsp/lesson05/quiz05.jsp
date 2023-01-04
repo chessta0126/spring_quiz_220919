@@ -37,7 +37,7 @@
 					<th>풍속</th>
 				</thead>
 				<tbody>
-					<c:forEach begin="0" end="14" step="1"
+					<c:forEach begin="0" end="${fn:length(weatherHistory)}" step="1"
 					var="weather" items="${weatherHistory}">
 						<tr>
 							<td>
@@ -45,24 +45,20 @@
 							</td>
 							<td>
 								<c:choose>
-									<c:when test="${weather.weather} eq '맑음'">
-									<img src="/img/lesson05/sunny.jpg"
-										alt="맑음" width="30px" height="30px">
+									<c:when test="${weather.weather eq '맑음'}">
+										<img src="/img/lesson05/sunny.jpg" alt="날씨">
 									</c:when>
 									
-									<c:when test="${weather.weather} eq '구름조금'">
-									<img src="/img/lesson05/partlyCloudy.jpg"
-										alt="구름조금" width="30px" height="30px">
+									<c:when test="${weather.weather eq '구름조금'}">
+										<img src="/img/lesson05/partlyCloudy.jpg" alt="날씨">
 									</c:when>
 									
-									<c:when test="${weather.weather} eq '흐림'">
-									<img src="/img/lesson05/cloudy.jpg"
-										alt="흐림" width="30px" height="30px">
+									<c:when test="${weather.weather eq '흐림'}">
+										<img src="/img/lesson05/cloudy.jpg" alt="날씨">
 									</c:when>
 									
-									<c:when test="${weather.weather} eq '비'">
-									<img src="/img/lesson05/rainy.jpg"
-										alt="비" width="30px" height="30px">
+									<c:when test="${weather.weather eq '비'}">
+										<img src="/img/lesson05/rainy.jpg" alt="날씨">
 									</c:when>
 									
 									<c:otherwise>
