@@ -24,7 +24,11 @@
 		</div>
 		<div class="pb-3">
 			<label for="url">주소</label>
-			<input type="text" class="form-control mb-2" id="url" name="url">
+			<div class="d-flex mb-3">
+				<input type="text" class="form-control mr-2" id="url" name="url">
+				<button type="button" class="btn btn-info" id="urlCheckBtn">중복확인</button>
+			</div>
+			<small id="urlStatusArea"></small>
 		</div>
 		
 		<!-- AJAX 버튼(submit 쓰면 안 됨) -->
@@ -33,8 +37,35 @@
 	
 	<script>
 		$(document).ready(function(){
-			$('#join').on('click',function(){
+			$('#urlCheckBtn').on('click',function(){
+				// urlStatusArea의 하위 태그들 초기화
+				$('#urlStatusArea').empty(); // 자식 태그들을 모두 비움
 				
+				// validation check
+				let url = $('#url').val().trim();
+				
+				// AJAX
+				$.ajax({
+					// Request
+					type:"GET"
+					,url:"/lesson06/quiz02/is_duplication"
+					,data:{"url":url}
+					
+					// Response
+					, success:function(data){ // String json -> object로 자동 파싱해줌
+						if(data.is_duplication){
+							$('#urlStatusArea').append('<span class="text-danger">중복된 url 입니다</span>')
+						} else {
+							$('#urlStatusArea').append('<span class="text-danger">저장 가능한 url 입니다.</span>')
+						}
+					}
+					, error:function(e){
+						alert("에러" + e);
+					}
+				});
+			});
+			
+			$('#join').on('click',function(){
 				// validation
 				let name = $('#name').val().trim();
 				if(name.length == ''){
@@ -60,11 +91,12 @@
 					,data:{"name":name, "url":url}
 					
 					// Response
-					, success:function(data){
-						alert(data);
-						
-						// 화면 이동
-						location.href="/lesson06/after_add_searchurl_view";
+					, success:function(data){ // String json -> object로 자동 파싱해줌
+						// alert(data);
+						if(data.result == "성공"){
+							// 화면 이동
+							location.href="/lesson06/after_add_searchurl_view";
+						}
 					}
 					/* , complete:function(data){
 						alert("완료");

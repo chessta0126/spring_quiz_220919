@@ -21,4 +21,8 @@ public class SearchUrlBO {
 	public List<SearchUrl> getSearchUrlList(){
 		return searchUrlDAO.selectSearchUrlList();
 	}
+
+	public Boolean existUserByUrl(String url){
+		return searchUrlDAO.existUserByUrl(url);
+	}
 }

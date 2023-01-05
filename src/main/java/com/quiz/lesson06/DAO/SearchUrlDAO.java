@@ -13,4 +13,6 @@ public interface SearchUrlDAO {
 			, @Param("url")String url);
 	
 	public List<SearchUrl> selectSearchUrlList();
+	
+	public Boolean existUserByUrl(String url);
 }

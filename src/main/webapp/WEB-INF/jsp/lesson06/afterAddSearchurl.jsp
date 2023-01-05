@@ -33,12 +33,35 @@
 					items="${searchUrlList}" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
+						<%-- <td>${searchUrl.id}</td> --%>
 						<td>${searchUrl.name}</td>
-						<td><a href="${searchUrl.url}">${searchUrl.url}</a></td>
+						<td><a href="${searchUrl.url}" target="_blank">${searchUrl.url}</a></td>
+						<td><button type="button" id="deleteUrlBtn" class="btn btn-danger">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$('#deleteUrlBtn').on('click',function(){
+				// AJAX
+				$.ajax({
+					// Request
+					type:"GET"
+					,url:"/lesson06/quiz02/delete_Url"
+					,data:{"url":url}
+					
+					// Response
+					, success:function(data){ // String json -> object로 자동 파싱해줌
+					}
+					, error:function(e){
+						alert("에러");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

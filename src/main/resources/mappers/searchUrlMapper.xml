@@ -32,4 +32,18 @@
 		FROM
 			`searchurl`
 	</select>
+
+	<select id="existUserByUrl" parameterType="String"
+		resultType="Boolean"> <!-- class 경로 -->
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`searchurl`
+		WHERE
+			`url` = #{url}
+	</select>
 </mapper>
