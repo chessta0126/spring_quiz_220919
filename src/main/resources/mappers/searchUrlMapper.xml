@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.quiz.lesson06.DAO.SearchUrlDAO">  <!-- DAO의 경로 -->
+	<insert id="insertSearchUrl" parameterType="map">
+	<!-- DAO에서 @Param으로 묶었으므로 parameterType="map"-->
+		INSERT INTO `searchurl`
+		(<!-- id는 알아서 생성될 것임 -->
+			`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{name}
+			,#{url}
+			,NOW()
+			,NOW()
+		)
+	</insert>
+	
+	<select id="selectSearchUrlList"
+		resultType="com.quiz.lesson06.model.SearchUrl"> <!-- class 경로 -->
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`searchurl`
+	</select>
+</mapper>

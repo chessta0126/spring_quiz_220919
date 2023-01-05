@@ -23,7 +23,7 @@
 			<input type="text" class="form-control mb-2" id="name" name="name">
 		</div>
 		<div class="pb-3">
-			<label for="name">주소</label>
+			<label for="url">주소</label>
 			<input type="text" class="form-control mb-2" id="url" name="url">
 		</div>
 		
@@ -64,7 +64,7 @@
 						alert(data);
 						
 						// 화면 이동
-						location.href="/lesson06/add_searchurl_view";
+						location.href="/lesson06/after_add_searchurl_view";
 					}
 					/* , complete:function(data){
 						alert("완료");
