@@ -22,11 +22,21 @@ public class SearchUrlBO {
 		return searchUrlDAO.selectSearchUrlList();
 	}
 
-	public Boolean existUserByUrl(String url){
-		return searchUrlDAO.existUserByUrl(url);
+//	public Boolean existSearchUrlByUrl(String url){
+//		return searchUrlDAO.existSearchUrlByUrl(url);
+//	} // Boolean은 실용성이 없으므로 그냥 객체로 return하는게 좋다.
+	
+	// Controller가 필요로하는 정보만 가공해서 준다.
+	public SearchUrl getSearchUrlByUrl(String url){
+		List<SearchUrl> searchUrlList = searchUrlDAO.selectSearchUrlByUrl(url);
+		// 비어있지(List는 비었어도 null은 아니고 []-> .isEmpty( )) 않으면
+		if(searchUrlList.isEmpty() == false) {
+			return searchUrlList.get(0);
+		}
+		return null;
 	}
 	
-	public void deleteSearchUrl(String deleteUrl) {
-		searchUrlDAO.deleteSearchUrl(deleteUrl);
+	public int deleteSearchUrlById(int id) {
+		return searchUrlDAO.deleteSearchUrlById(id);
 	}
 }

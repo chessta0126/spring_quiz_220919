@@ -33,8 +33,8 @@
 			`searchurl`
 	</select>
 
-	<select id="existUserByUrl" parameterType="String"
-		resultType="Boolean"> <!-- class 경로 -->
+	<select id="selectSearchUrlByUrl" parameterType="String"
+		resultType="map"> <!-- class 경로 -->
 		SELECT
 			`id`
 			,`name`
@@ -47,10 +47,10 @@
 			`url` = #{url}
 	</select>
 	
-	<delete id="deleteSearchUrl" parameterType="String">
+	<delete id="deleteSearchUrlById" parameterType="int">
 		DELETE
 		FROM `searchurl`
 		WHERE
-			`url` = #{url}
+			`id` = #{id}
 	</delete>
 </mapper>

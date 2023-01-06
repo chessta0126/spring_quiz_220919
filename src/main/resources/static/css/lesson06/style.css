@@ -1,0 +1,5 @@
+@charset "UTF-8";
+header{height: 100px;}
+nav{height: 50px; background-color: #ff8000}
+.nav-item{color: white; font-weight: bold; font-size: 20px}
+a, a:hover{color: white; text-decoration: none;}

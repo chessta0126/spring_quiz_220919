@@ -14,7 +14,8 @@ public interface SearchUrlDAO {
 	
 	public List<SearchUrl> selectSearchUrlList();
 	
-	public Boolean existUserByUrl(String url);
+//	public Boolean existSearchUrlByUrl(String url);
+	public List<SearchUrl> selectSearchUrlByUrl(String url);
 	
-	public void deleteSearchUrl(String deleteUrl);
+	public int deleteSearchUrlById(int id);
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,20 +58,40 @@ public class Lesson06Quiz01Controller {
 	
 	// 이름 중복 확인
 	@ResponseBody
-	@GetMapping("/lesson06/quiz02/is_duplication")
+	@PostMapping("/lesson06/quiz02/is_duplication")
 	public Map<String, Boolean> isDuplication(
 			@RequestParam("url") String url
 			) {
 		
 		Map<String, Boolean> result = new HashMap<>();
-		result.put("is_duplication", searchUrlBO.existUserByUrl(url));
-			
+		SearchUrl searchUrl = searchUrlBO.getSearchUrlByUrl(url);
+		if(searchUrl != null) {
+			result.put("is_duplication", true);
+		} else {
+			result.put("is_duplication", false);
+		}
 		return result;
 	}
 	
-	@GetMapping("/lesson06/quiz02/delete_Url")
-	public String deleteSearchUrl(String deleteUrl) {
-		searchUrlBO.deleteSearchUrl(deleteUrl);
-		return "/lesson06/afterAddSearchurl";
+	// AJAX 요청(delete) : Get으로 하면 주소 치고 와서 함부로 지울 위험
+	@ResponseBody
+	@DeleteMapping("/lesson06/quiz02/delete_Url")
+	public Map<String,Object> deleteSearchUrl(
+			@RequestParam("id") int id) {
+		
+		Map<String,Object> result = new HashMap<>();
+		
+		//DB delete
+		int row = searchUrlBO.deleteSearchUrlById(id);
+		if(row > 0) {
+			result.put("code", 1); // 성공
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500); // 실패
+			result.put("result", "실패");
+			result.put("error_message", "삭제된 행이 없습니다.");
+		}
+		
+		return result;
 	}
 }
