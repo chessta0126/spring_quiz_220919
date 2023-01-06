@@ -46,4 +46,11 @@
 		WHERE
 			`url` = #{url}
 	</select>
+	
+	<delete id="deleteSearchUrl" parameterType="String">
+		DELETE
+		FROM `searchurl`
+		WHERE
+			`url` = #{url}
+	</delete>
 </mapper>

@@ -69,5 +69,8 @@ public class Lesson06Quiz01Controller {
 	}
 	
 	@GetMapping("/lesson06/quiz02/delete_Url")
-	public 
+	public String deleteSearchUrl(String deleteUrl) {
+		searchUrlBO.deleteSearchUrl(deleteUrl);
+		return "/lesson06/afterAddSearchurl";
+	}
 }

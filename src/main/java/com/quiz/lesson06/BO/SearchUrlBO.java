@@ -25,4 +25,8 @@ public class SearchUrlBO {
 	public Boolean existUserByUrl(String url){
 		return searchUrlDAO.existUserByUrl(url);
 	}
+	
+	public void deleteSearchUrl(String deleteUrl) {
+		searchUrlDAO.deleteSearchUrl(deleteUrl);
+	}
 }

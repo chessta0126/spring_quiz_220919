@@ -36,7 +36,8 @@
 						<%-- <td>${searchUrl.id}</td> --%>
 						<td>${searchUrl.name}</td>
 						<td><a href="${searchUrl.url}" target="_blank">${searchUrl.url}</a></td>
-						<td><button type="button" id="deleteUrlBtn" class="btn btn-danger">삭제</button></td>
+						<c:set var="certainUrl" value="${searchUrl.url}"/>
+						<td><button type="button" value="${certainUrl}" class="btn btn-danger deleteUrlBtn">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -45,13 +46,21 @@
 	
 	<script>
 		$(document).ready(function(){
-			$('#deleteUrlBtn').on('click',function(){
+			$('.deleteUrlBtn').on('click',function(){
+				let deleteUrl = "";
+				
+				for(let searchUrl : ${searchUrlList}){
+					if($('.deleteUrlBtn').val().equals(searchUrl.url)){
+						deleteUrl = $('.deleteUrlBtn').val();
+					}
+				}
+				
 				// AJAX
 				$.ajax({
 					// Request
 					type:"GET"
 					,url:"/lesson06/quiz02/delete_Url"
-					,data:{"url":url}
+					,data:{"deleteUrl":deleteUrl}
 					
 					// Response
 					, success:function(data){ // String json -> object로 자동 파싱해줌

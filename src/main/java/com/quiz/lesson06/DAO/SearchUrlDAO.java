@@ -15,4 +15,6 @@ public interface SearchUrlDAO {
 	public List<SearchUrl> selectSearchUrlList();
 	
 	public Boolean existUserByUrl(String url);
+	
+	public void deleteSearchUrl(String deleteUrl);
 }
