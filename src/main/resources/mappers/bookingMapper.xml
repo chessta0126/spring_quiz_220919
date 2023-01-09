@@ -51,8 +51,8 @@
 		)
 	</insert>
 	
-	<select id="selectBooking" parameterType="map"
-		resultType="map">
+	<select id="selectLatestBookingByNamePhoneNumber" parameterType="map"
+		resultType="com.quiz.lesson06.model.Booking">
 		SELECT
 			`id`
 			,`name`
@@ -67,5 +67,7 @@
 			`booking`
 		WHERE
 			`name`=#{name} and `phoneNumber`=#{phoneNumber}
+		ORDER BY `id` desc
+		LIMIT 1
 	</select>
 </mapper>

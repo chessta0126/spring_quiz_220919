@@ -43,17 +43,18 @@ public class Lesson06QuizFinalController {
 		//DB delete
 		int row = bookingBO.deleteBookingById(id);
 		if(row > 0) {
-			result.put("code", 1); // 성공
+			result.put("code", 1);
 			result.put("result", "성공");
 		} else {
-			result.put("code", 500); // 실패
+			result.put("code", 500);
 			result.put("result", "실패");
-			result.put("error_message", "삭제된 행이 없습니다.");
+			result.put("error_message", "삭제에 실패했습니다.");
 		}
 		
 		return result;
 	}
 	
+	// 예약하기 화면
 	// http://localhost:8080/lesson06/finalQuiz_addBooking
 	@GetMapping("/finalQuiz_addBooking")
 	public String addBooking() {
@@ -62,27 +63,21 @@ public class Lesson06QuizFinalController {
 	
 	// AJAX 통신, insert
 	@ResponseBody
-	@PostMapping("/insert_Booking")
-	public Map<String,Object> insertBooking(
+	@PostMapping("/add_Booking")
+	public Map<String,Object> addBooking(
 			@RequestParam("name") String name
-			,@RequestParam("date") Date date
+			,@RequestParam("date") String date
 			,@RequestParam("day") int day
 			,@RequestParam("headcount") int headcount
 			,@RequestParam("phoneNumber") String phoneNumber
 			) {
 		
-		Map<String,Object> result = new HashMap<>();
-		
 		//DB insert
-		boolean isInsert = bookingBO.addBooking(name, date, day, headcount, phoneNumber);
-		if(isInsert) {
-			result.put("code", 1); // 성공
-			result.put("result", "예약이 완료되었습니다.");
-		} else {
-			result.put("code", 500); // 실패
-			result.put("result", "실패");
-			result.put("error_message", "예약이 실패했습니다.");
-		}
+		bookingBO.addBooking(name, date, day, headcount, phoneNumber);
+
+		// 응답값 내리기
+		Map<String,Object> result = new HashMap<>();
+		result.put("result", "예약이 완료되었습니다.");
 		
 		return result;
 	}
@@ -96,7 +91,7 @@ public class Lesson06QuizFinalController {
 	// AJAX 통신, select
 	// http://localhost:8080/lesson06/finalQuiz_getBooking
 	@ResponseBody
-	@GetMapping("/finalQuiz_getBooking")
+	@PostMapping("/finalQuiz_getBooking")
 	public Map<String,Object> getBooking(
 			@RequestParam("name") String name
 			,@RequestParam("phoneNumber") String phoneNumber
@@ -104,14 +99,13 @@ public class Lesson06QuizFinalController {
 		
 		Map<String,Object> result = new HashMap<>();
 		
-		//DB insert
-		Booking confirmBooking = bookingBO.getBooking(name,phoneNumber);
+		//DB select (최신 예약 내역 1건)
+		Booking confirmBooking = bookingBO.getLatestBookingByNamePhoneNumber(name,phoneNumber);
 		if(confirmBooking != null) {
 			result.put("code", 1); // 성공
-			result.put("result", confirmBooking);
+			result.put("confirmBooking", confirmBooking);
 		} else {
 			result.put("code", 500); // 실패
-			result.put("result", "예약 내역이 없습니다");
 		}
 		
 		return result;

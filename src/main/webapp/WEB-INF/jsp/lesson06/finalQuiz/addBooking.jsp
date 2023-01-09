@@ -13,6 +13,10 @@
 	<!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
 
+	<!-- datepicker 라이브러리 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- bootstrap CDN link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -59,6 +63,21 @@
 	
 	<script>
 		$(document).ready(function() {
+			// datepicker
+            $.datepicker.setDefaults({                    
+                // 요일 표시 : 한글
+                dayNamesMin:['일','월','화','수','목','금','토']
+                ,minDate:0
+                ,dateFormat:"yy-mm-dd"
+            });
+
+            $('#date').datepicker({
+                onSelect:function(dateText){
+                    $('#date').datepicker('option',dateText);
+                }
+            });
+			
+			// 예약하기
 			$('#bookingBtn').on('click', function(){
 				let name = $('#name').val().trim();
 				let date = $('#date').val().trim();
@@ -71,7 +90,7 @@
 					alert("이름을 입력하세요");
 					return;
 				}
-				if(date == ''){
+				if(date == ""){
 					alert("예약날짜를 선택하세요");
 					return;
 				}
@@ -92,14 +111,15 @@
 				$.ajax({
 					// Request
 					type : "post",
-					url : "/lesson06/insert_Booking",
-					data : {"name" : name, "date" : date, "day" : day, "headcount" : headcount, "phoneNumber" : phoneNumber}
+					url : "/lesson06/add_Booking",
+					data : {"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
 
 					// Response
 					,success : function(data) {
-						alert(data.code);
+						alert("예약 성공");
+						location.href="/lesson06/finalQuiz_viewBooking"
 					},error : function(e) {
-						alert("에러" + e);
+						alert("예약 실패");
 					}
 				});
 			});

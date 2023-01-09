@@ -22,15 +22,10 @@ public class BookingBO {
 	public int deleteBookingById(int id){
 		return bookingDAO.deleteBookingById(id);
 	}
-	public boolean addBooking(String name, Date date, int day, int headcount,String phoneNumber){
+	public boolean addBooking(String name, String date, int day, int headcount,String phoneNumber){
 		return bookingDAO.insertBooking(name, date, day, headcount, phoneNumber);
 	}
-	public Booking getBooking(String name,String phoneNumber){
-		List<Booking> confirmBookingList = bookingDAO.selectBooking(name, phoneNumber);
-		// 비어있지(List는 비었어도 null은 아니고 []-> .isEmpty( )) 않으면
-		if(confirmBookingList.isEmpty() == false) {
-			return confirmBookingList.get(0); // 가장 처음 예약한 정보만 보내준다.
-		}
-		return null;
+	public Booking getLatestBookingByNamePhoneNumber(String name,String phoneNumber){
+		return bookingDAO.selectLatestBookingByNamePhoneNumber(name, phoneNumber);
 	}
 }

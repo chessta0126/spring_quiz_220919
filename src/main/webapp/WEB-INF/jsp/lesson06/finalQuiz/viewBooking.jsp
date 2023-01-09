@@ -36,6 +36,7 @@
 					<th>숙박인원</th>
 					<th>전화번호</th>
 					<th>예약상태</th>
+					<th></th>
 				</thead>
 				<tbody>
 					<c:forEach  begin="0" end="${fn:length(bookingList)}" step="1"
@@ -46,14 +47,19 @@
 						<td>${books.day}</td>
 						<td>${books.headcount}</td>
 						<td>${books.phoneNumber}</td>
+						<td>
 						<c:choose>
 							<c:when test="${books.state eq '대기중'}">
-								<td class="text-info">${books.state}</td>
+								<span class="text-info">${books.state}</span>
 							</c:when>
 							<c:when test="${books.state eq '확정'}">
-								<td class="text-success">${books.state}</td>
+								<span class="text-success">${books.state}</span>
+							</c:when>
+							<c:when test="${books.state eq '취소'}">
+								<span class="text-danger">${books.state}</span>
 							</c:when>
 						</c:choose>
+						</td>
 						<td>
 							<%-- data를 이용해서 태그에 임시 저장(data-이름에 대문자 못 들어감) --%>
 							<button type="button" class="btn btn-danger deleteBookingBtn" data-booking-id="${books.id}">삭제</button>
@@ -84,10 +90,15 @@
 
 					// Response
 					,success : function(data) {
-						alert(data.code);
+						if(data.code == 1){
+							document.location.reload(true);
+						} else if(data.code == 500){
+							alert(data.error_message);
+						}
 					},error : function(e) {
-						alert("에러" + e);
+						alert("삭제 중 서버와 통신이 실패했습니다.");
 					}
+				});
 			});
 		});
 	</script>
