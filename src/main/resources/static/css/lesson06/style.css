@@ -3,3 +3,21 @@ header{height: 100px;}
 nav{height: 50px; background-color: #ff8000}
 .nav-item{color: white; font-weight: bold; font-size: 20px}
 a, a:hover{color: white; text-decoration: none;}
+
+section > .book{height: 300px;}
+section > .book > .article1, .article3{background-color: rgb(154, 109, 59);}
+section > .book > .article2{background-color: rgb(105, 68, 26);}
+section .article1-text{
+    color: #fff;
+    font-size: 40px;
+    font-weight: lighter;
+}
+section .article2-text{
+    color: #fff;
+}
+
+section .article3-text{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}

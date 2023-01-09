@@ -46,9 +46,17 @@
 						<td>${books.day}</td>
 						<td>${books.headcount}</td>
 						<td>${books.phoneNumber}</td>
-						<td>${books.state}</td>
+						<c:choose>
+							<c:when test="${books.state eq '대기중'}">
+								<td class="text-info">${books.state}</td>
+							</c:when>
+							<c:when test="${books.state eq '확정'}">
+								<td class="text-success">${books.state}</td>
+							</c:when>
+						</c:choose>
 						<td>
-							<button type="button" class="btn btn-danger">삭제</button>
+							<%-- data를 이용해서 태그에 임시 저장(data-이름에 대문자 못 들어감) --%>
+							<button type="button" class="btn btn-danger deleteBookingBtn" data-booking-id="${books.id}">삭제</button>
 						</td>
 					</tr>
 					</c:forEach>
@@ -58,5 +66,30 @@
 		
 		<jsp:include page="footer.jsp"/>
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			// data를 이용해서 태그에 임시 저장
+			// 태그 : data-booking-id     data-이름지정(대문자 불가)
+			// 스크립트 : $(this).data('booking-id');
+			$('.deleteBookingBtn').on('click', function(){
+				let id = $(this).data('booking-id');
+				
+				// AJAX
+				$.ajax({
+					// Request
+					type : "delete",
+					url : "/lesson06/finalQuiz_deleteBooking",
+					data : {"id" : id}
+
+					// Response
+					,success : function(data) {
+						alert(data.code);
+					},error : function(e) {
+						alert("에러" + e);
+					}
+			});
+		});
+	</script>
 </body>
 </html>

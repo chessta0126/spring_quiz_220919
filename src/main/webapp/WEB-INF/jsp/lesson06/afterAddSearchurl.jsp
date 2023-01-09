@@ -52,7 +52,7 @@
 	</div>
 	
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			// 1) name 속성 + value 속성 삭제
 			/* $('button[name=deleteUrlBtn]').on('click',function(e){
 				// let id = $(this).val(); // 방금 클릭한 거 : $(this)
@@ -60,35 +60,35 @@
 				let id = e.target.value;
 				alert(id);
 			}); */
-			
+
 			// 2) data를 이용해서 태그에 임시 저장
 			// 태그 : data-searchUrl-id     data-이름지정(대문자 불가)
 			// 스크립트 : $(this).data('searchUrl-id');
-			$('.deleteUrlBtn').on('click',function(){
+			$('.deleteUrlBtn').on('click', function() {
 				let id = $(this).data('searchUrl-id');
+
+				// AJAX
+				$.ajax({
+					// Request
+					type : "delete",
+					url : "/lesson06/quiz02/delete_Url",
+					data : {"id" : id}
+
+					// Response
+					,success : function(data) {
+						if (data.code == 1) {
+							// 성공
+							// location.href="" // 다시 새로고침 되므로 화면이 위로 올라가버림
+							document.location.reload(true); // 화면이 그대로인 상태에서 새로고침
+						} else if (data.code == 500) {
+							// 에러
+							alert(data.error_message);
+						}
+					},error : function(e) {
+						alert("에러" + e);
+					}
+				});
 			});
-			
-			// AJAX
-			$.ajax({
-				// Request
-				type:"delete"
-				,url:"/lesson06/quiz02/delete_Url"
-				,data:{"id":id}
-			
-			// Response
-			, success:function(data){
-				if(data.code == 1){
-					// 성공
-					// location.href="" // 다시 새로고침 되므로 화면이 위로 올라가버림
-					document.location.reload(true); // 화면이 그대로인 상태에서 새로고침
-				} else if(data.code == 500){
-					// 에러
-					alert(data.error_message);
-				}
-			}
-			, error:function(e){
-				alert("에러" + e);
-			}
 		});
 	</script>
 </body>

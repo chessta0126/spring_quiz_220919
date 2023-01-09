@@ -3,6 +3,8 @@ package com.quiz.lesson06.DAO;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.quiz.lesson06.model.SearchUrl;
 
 @Repository

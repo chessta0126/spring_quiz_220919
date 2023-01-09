@@ -64,7 +64,7 @@
 					
 					// Response
 					, success:function(data){ // String json -> object로 자동 파싱해줌
-						if(data.is_duplication){ // true(중복임)
+						if(data.is_duplication == true){ // true(중복임)
 							$('#urlStatusArea').append('<span class="text-danger">중복된 url 입니다</span>')
 							$('#availableText').addClass("d-none");
 							$('#duplicationText').removeClass("d-none");
@@ -113,9 +113,6 @@
 							location.href="/lesson06/after_add_searchurl_view";
 						}
 					}
-					/* , complete:function(data){
-						alert("완료");
-					} */
 					, error:function(e){
 						alert("에러");
 					}

@@ -21,8 +21,7 @@
 		)
 	</insert>
 	
-	<select id="selectSearchUrlList"
-		resultType="com.quiz.lesson06.model.SearchUrl"> <!-- class 경로 -->
+	<select id="selectSearchUrlList" resultType="map">
 		SELECT
 			`id`
 			,`name`
