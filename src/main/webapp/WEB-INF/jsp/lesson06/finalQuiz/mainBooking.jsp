@@ -129,11 +129,11 @@
 					// Response
 					,success : function(data) {
 						if(data.code == 1){ // 조회된 내역이 있을 때
-							let message = "이름 : " + data.booking.name
-							+ "\n 날짜 : " + data.booking.date.slice(0,10)
-							+ "\n 일수 : " + data.booking.day
-							+ "\n 인원 : " + data.booking.headcount
-							+ "\n 상태 : " + data.booking.state;
+							let message = "이름 : " + data.confirmBooking.name
+							+ "\n 날짜 : " + data.confirmBooking.date.slice(0,10)
+							+ "\n 일수 : " + data.confirmBooking.day
+							+ "\n 인원 : " + data.confirmBooking.headcount
+							+ "\n 상태 : " + data.confirmBooking.state;
 							alert(message);
 						} else{ // 조회된 내역이 없을 때 + error
 							alert("예약 내역이 없습니다.");

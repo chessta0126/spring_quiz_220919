@@ -29,7 +29,7 @@
 	<insert id="insertBooking" parameterType="map">
 		INSERT INTO `booking`
 		(<!-- id는 알아서 생성될 것임 -->
-			,`name`
+			`name`
 			,`headcount`
 			,`day`
 			,`date`
