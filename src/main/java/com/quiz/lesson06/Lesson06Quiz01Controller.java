@@ -53,7 +53,7 @@ public class Lesson06Quiz01Controller {
 		
 		model.addAttribute("searchUrlList",searchUrlList);
 		
-		return "/lesson06/afterAddSearchurl";
+		return "lesson06/afterAddSearchurl";
 	}
 	
 	// 이름 중복 확인
@@ -64,6 +64,7 @@ public class Lesson06Quiz01Controller {
 			) {
 		
 		Map<String, Boolean> result = new HashMap<>();
+		
 		SearchUrl searchUrl = searchUrlBO.getSearchUrlByUrl(url);
 		if(searchUrl != null) {
 			result.put("is_duplication", true);

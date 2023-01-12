@@ -28,7 +28,7 @@
 				<input type="text" class="form-control mr-2" id="url" name="url">
 				<button type="button" class="btn btn-info" id="urlCheckBtn">중복확인</button>
 			</div>
-			<small id="urlStatusArea"></small>
+			<!-- <small id="urlStatusArea"></small> -->
 			<small id="duplicationText" class="text-danger d-none">중복된 url 입니다</small>
 			<small id="availableText" class="text-success d-none">저장 가능한 url 입니다.</small>
 		</div>
@@ -65,11 +65,11 @@
 					// Response
 					, success:function(data){ // String json -> object로 자동 파싱해줌
 						if(data.is_duplication == true){ // true(중복임)
-							$('#urlStatusArea').append('<span class="text-danger">중복된 url 입니다</span>')
+							/* $('#urlStatusArea').append('<span class="text-danger">중복된 url 입니다</span>') */
 							$('#availableText').addClass("d-none");
 							$('#duplicationText').removeClass("d-none");
 						} else {
-							$('#urlStatusArea').append('<span class="text-danger">저장 가능한 url 입니다.</span>')
+							/* $('#urlStatusArea').append('<span class="text-danger">저장 가능한 url 입니다.</span>') */
 							$('#duplicationText').addClass("d-none");
 							$('#availableText').removeClass("d-none");
 						}

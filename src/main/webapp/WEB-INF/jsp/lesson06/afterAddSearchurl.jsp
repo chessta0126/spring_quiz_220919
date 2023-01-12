@@ -27,13 +27,14 @@
 				<th>No.</th>
 				<th>이름</th>
 				<th>주소</th>
+				<th></th>
 			</thead>
 			<tbody>
 				<c:forEach begin="0" end="${fn:length(searchUrlList)}" step="1" var="searchUrl"
 					items="${searchUrlList}" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
-						<%-- <td>${searchUrl.id}</td> --%>
+						<%-- <td>${searchUrl.id}</td> --%><%-- 아이디는 중간에 삭제하면 숫자가 빌 수 있으므로 --%>
 						<td>${searchUrl.name}</td>
 						<td><a href="${searchUrl.url}" target="_blank">${searchUrl.url}</a></td>
 						<%-- 반복문을 돌고 있기 때문에, 유일한 id를 부여할 수 없다. class나 name으로 버튼 이름 설정 --%>
@@ -43,7 +44,7 @@
 
 							<%-- 2) data를 이용해서 태그에 임시 저장(data-이름에 대문자 못 들어감) --%>
 							<%-- j-Query 사용 시 권장하는 방법 --%>
-							<button type="button" class="btn btn-danger deleteUrlBtn" data-searchUrl-id="${searchUrl.id}">삭제</button>
+							<button type="button" class="btn btn-danger deleteUrlBtn" data-searchurl-id="${searchUrl.id}">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -62,10 +63,11 @@
 			}); */
 
 			// 2) data를 이용해서 태그에 임시 저장
-			// 태그 : data-searchUrl-id     data-이름지정(대문자 불가)
-			// 스크립트 : $(this).data('searchUrl-id');
+			// 태그 : data-searchUrl-id     data-이름지정(★대문자 불가)
+			// 스크립트 : $(this).data('searchurl-id');
 			$('.deleteUrlBtn').on('click', function() {
-				let id = $(this).data('searchUrl-id');
+				let id = $(this).data('searchurl-id');
+				/* alert(id); */
 
 				// AJAX
 				$.ajax({

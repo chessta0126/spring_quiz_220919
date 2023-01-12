@@ -33,7 +33,7 @@
 	</select>
 
 	<select id="selectSearchUrlByUrl" parameterType="String"
-		resultType="map"> <!-- class 경로 -->
+		resultType="com.quiz.lesson06.model.SearchUrl"> <!-- class 경로 -->
 		SELECT
 			`id`
 			,`name`
